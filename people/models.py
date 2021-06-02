@@ -18,7 +18,7 @@ class Person(core_models.TimeStampedModel):
 
     name = models.CharField(max_length=30)
     kind = models.CharField(max_length=20, choices=KIND_CHOICE, null=True)
-    photo = models.ImageField()
+    photo = models.ImageField(blank=True)
 
     def __str__(self):
         return self.name

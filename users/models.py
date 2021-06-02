@@ -20,7 +20,7 @@ class User(AbstractUser):
     )
 
     bio = models.TextField(default="", null=True)
-    preference = models.CharField(max_length=20, choices=PREF_CHOICES)
+    preference = models.CharField(max_length=20, choices=PREF_CHOICES, default="All")
     language = models.CharField(choices=LANGUAGE_CHOICE, max_length=20, null=True)
     favorite_book_genre = models.ManyToManyField(
         "categories.Genre", related_name="users_book"

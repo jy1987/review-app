@@ -10,10 +10,10 @@ class Book(core_models.TimeStampedModel):
 
     title = models.CharField(max_length=60)
     year = models.DateField()
-    category = models.ForeignKey(
-        "categories.Category", related_name="books", on_delete=CASCADE
+    genre = models.ForeignKey(
+        "categories.Genre", related_name="books", on_delete=CASCADE, default=""
     )
-    cover_image = models.ImageField()
+    cover_image = models.ImageField(blank=True)
     rating = models.IntegerField()
     writer = models.ForeignKey("people.Person", related_name="books", on_delete=CASCADE)
 

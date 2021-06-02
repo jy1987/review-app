@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser
+from datetime import timezone
 from django.db import models
 from core import models as core_models
 
@@ -19,7 +19,7 @@ class Genre(AbstractItem):
     pass
 
 
-class Category(AbstractItem):
+class Category(core_models.TimeStampedModel):
 
     Book = "book"
     Movie = "movie"
@@ -28,10 +28,13 @@ class Category(AbstractItem):
     KIND_CHOICE = (
         (Book, "Book"),
         (Movie, "Movie"),
-        (Total, "all"),
+        (Total, "All"),
     )
 
-    kind = models.CharField(max_length=20, choices=KIND_CHOICE)
+    kind = models.CharField(max_length=20, choices=KIND_CHOICE, default="All")
+
+    class Meta:
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return str(self.kind)

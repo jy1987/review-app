@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+from django.db.models.fields import related
 from core import models as core_models
 
 # Create your models here.
@@ -9,9 +10,10 @@ class Movie(core_models.TimeStampedModel):
 
     title = models.CharField(max_length=60)
     year = models.DateField()
-    cover_image = models.ImageField()
+    cover_image = models.ImageField(blank=True)
     rating = models.IntegerField()
     category = models.ManyToManyField("categories.Category", related_name="movie")
+    genre = models.ManyToManyField("categories.Genre", related_name="movie")
     director = models.ForeignKey(
         "people.Person", related_name="movie_director", on_delete=CASCADE
     )

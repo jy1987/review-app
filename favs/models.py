@@ -14,4 +14,4 @@ class FavList(core_models.TimeStampedModel):
     movies = models.ManyToManyField("movies.Movie")
 
     def __str__(self):
-        return self.created_by
+        return str(self.created_by)
