@@ -12,8 +12,6 @@ class CustomUserAdmin(UserAdmin):
         "language",
         "bio",
         "preference",
-        "favorite_book_genre",
-        "favorite_movie_genre",
         "language",
     )
 

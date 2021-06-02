@@ -1,10 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.deletion import CASCADE
 
 
 class User(AbstractUser):
 
     """Custom User Model"""
+
+    PREF_BOOKS = "books"
+    PREF_MOVIES = "movies"
+    PREF_CHOICES = ((PREF_BOOKS, "Books"), (PREF_MOVIES, "Movies"))
 
     LANGUAGE_EN = "english"
     LANGUAGE_KR = "korean"
@@ -14,17 +19,13 @@ class User(AbstractUser):
         (LANGUAGE_KR, "Korean"),
     )
 
-    PREFER_BOOK = "book"
-    PREFER_MOVIE = "movie"
-
-    PREFER_CHOICE = (
-        (PREFER_BOOK, "Book"),
-        (PREFER_MOVIE, "Movie"),
-    )
-
     bio = models.TextField(default="", null=True)
-    preference = models.CharField(choices=PREFER_CHOICE, max_length=10, null=True)
-    language = models.CharField(choices=LANGUAGE_CHOICE, max_length=10, null=True)
-    favorite_book_genre = models.CharField(max_length=40, null=True)
-    favorite_movie_genre = models.CharField(max_length=40, null=True)
+    preference = models.CharField(max_length=20, choices=PREF_CHOICES)
+    language = models.CharField(choices=LANGUAGE_CHOICE, max_length=20, null=True)
+    favorite_book_genre = models.ManyToManyField(
+        "categories.Genre", related_name="users_book"
+    )
+    favorite_movie_genre = models.ManyToManyField(
+        "categories.Genre", related_name="users_movie"
+    )
     superhost = models.BooleanField(default=False)
