@@ -11,8 +11,10 @@ class MovieAdmin(admin.ModelAdmin):
         "title",
         "year",
         "cover_image",
+        "movie_genre",
         "rating",
         "director",
+        "movie_cast",
     )
 
     list_filter = (
@@ -21,3 +23,17 @@ class MovieAdmin(admin.ModelAdmin):
         "director",
         "cast",
     )
+
+    def movie_genre(self, obj):  # 1 함수 이름과 list 이름이 같아야함. obj 는 row를 말하며, 여기선 Room 이다.
+        genres = []
+        for genre in obj.genre.all():  # Room에서 __str__ 로 name을 리턴했으므로 Room.name이 출력됨.
+            genres.append(genre)
+
+        return genres
+
+    def movie_cast(self, obj):  # 1 함수 이름과 list 이름이 같아야함. obj 는 row를 말하며, 여기선 Room 이다.
+        casts = []
+        for cast in obj.cast.all():  # Room에서 __str__ 로 name을 리턴했으므로 Room.name이 출력됨.
+            casts.append(cast)
+
+        return casts

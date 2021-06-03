@@ -10,6 +10,7 @@ class Review(core_models.TimeStampedModel):
     """review model definition"""
 
     created_by = models.ForeignKey("users.User", on_delete=models.CASCADE)
+    text = models.TextField(default="")
     movie = models.ForeignKey(
         "movies.Movie", on_delete=models.CASCADE, null=True, blank=True
     )
