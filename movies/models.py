@@ -21,3 +21,13 @@ class Movie(core_models.TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def total_rating(self):
+        all_reviews = self.reviews.all()
+        all_rating = 0
+        for review in all_reviews:
+            all_rating += review.ratings()
+        try:
+            return all_rating / len(all_reviews)
+        except ZeroDivisionError:
+            return 0

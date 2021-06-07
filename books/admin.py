@@ -13,6 +13,7 @@ class BookAdmin(admin.ModelAdmin):
         "genre",
         "rating",
         "writer",
+        "total_rating",
     )
 
     list_filter = (

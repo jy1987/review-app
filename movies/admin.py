@@ -15,6 +15,7 @@ class MovieAdmin(admin.ModelAdmin):
         "rating",
         "director",
         "movie_cast",
+        "total_rating",
     )
 
     list_filter = (
