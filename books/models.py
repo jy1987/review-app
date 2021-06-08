@@ -13,7 +13,7 @@ class Book(core_models.TimeStampedModel):
     genre = models.ForeignKey(
         "categories.Genre", related_name="books", on_delete=CASCADE, default=""
     )
-    cover_image = models.ImageField(blank=True)
+    cover_image = models.ImageField(upload_to="book_photos", blank=True)
     rating = models.IntegerField()
     writer = models.ForeignKey("people.Person", related_name="books", on_delete=CASCADE)
 

@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from . import models
+from users.models import User
 
 
-@admin.register(models.User)
+@admin.register(User)
 class CustomUserAdmin(UserAdmin):
     """Custom User Admin"""
 
@@ -12,7 +12,6 @@ class CustomUserAdmin(UserAdmin):
         "language",
         "bio",
         "preference",
-        "language",
         "fav_books_genre",
         "fav_movies_genre",
     )

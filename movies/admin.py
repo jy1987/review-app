@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 from . import models
 
 # Register your models here.
@@ -10,7 +11,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "year",
-        "cover_image",
+        "get_cover",
         "movie_genre",
         "rating",
         "director",
@@ -20,7 +21,6 @@ class MovieAdmin(admin.ModelAdmin):
 
     list_filter = (
         "rating",
-        "category",
         "director",
         "cast",
     )
@@ -38,3 +38,6 @@ class MovieAdmin(admin.ModelAdmin):
             casts.append(cast)
 
         return casts
+
+    def get_cover(self, obj):
+        return mark_safe(f"<img width='35px' src={obj.cover_image.url} />")

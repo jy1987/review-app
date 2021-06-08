@@ -11,7 +11,7 @@ class FavAdmin(admin.ModelAdmin):
         "set_movies",
     )
 
-    list_filter = ("created_by",)
+    list_filter = ("created_by", "books", "movies")
 
     def set_books(self, obj):  # 1 함수 이름과 list 이름이 같아야함. obj 는 row를 말하며, 여기선 Room 이다.
         all_books = []
