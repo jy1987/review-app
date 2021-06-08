@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
         director = Person.objects.all()
         cast = Person.objects.all()
-        print(Person.objects.all())
+        print(cast)
         seeder.add_entity(
             Movie,
             int(total),
@@ -49,10 +49,21 @@ class Command(BaseCommand):
         for pk in created_clean:
 
             movies = Movie.objects.get(pk=pk)
-            genre = favorite_movie_genre[random.randint(1, 2) : random.randint(3, 4)]
-            cast = cast[random.randint(3, 4) : random.randint(5, 7)]
-            movies.genre.add(*genre)
-            movies.cast.add(*cast)
-            # manytomany 만드는 방법
+
+            for g in favorite_movie_genre:
+                get_number = random.randint(0, 3)
+                if get_number % 2 == 0:
+                    movies.genre.add(g)
+
+            for c in cast:
+                get_number = random.randint(0, 3)
+                if get_number % 2 == 0:
+                    movies.cast.add(c)
+
+        # genre = favorite_movie_genre[random.randint(1, 3) : random.randint(4, 7)]
+        # cast = cast[random.randint(1, 5) : random.randint(20, 25)]
+        # movies.genre.add(*genre)
+        # movies.cast.add(*cast)
+        # manytomany 만드는 방법
 
         self.stdout.write(self.style.SUCCESS(f"{total} movies created!"))
