@@ -1,0 +1,23 @@
+
+    {% extends "base.html" %}
+    
+    
+    {% block title %}
+        Movies
+    {% endblock title %}
+        
+    
+    {% block content %}
+
+    <h1>Movies</h1>
+    <ul>
+        {% for movie in movies %}
+    <li>{{movie}} : {{movie.rating}} by {{movie.director}}</li>
+        {% endfor %}
+
+    
+    </ul>
+    {% endblock content %}
+    
+        
+   

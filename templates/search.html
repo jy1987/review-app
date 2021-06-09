@@ -1,0 +1,19 @@
+
+    {% extends "base.html" %}
+    
+    
+    {% block title %}
+        Search
+    {% endblock title %}
+        
+    
+    {% block content %}
+
+    <h1>What are u looking for?</h1>
+    <form class="search "method="get" action="/movies">
+        <input class="search_what" type="text" placeholder="Search Whatever u look for!!" value={{name}}>
+        <button>Search</button>
+    </form>
+
+    {% endblock content %}
+   
