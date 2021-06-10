@@ -3,14 +3,64 @@
     
     
     {% block title %}
-        Home
+        Movies
     {% endblock title %}
         
     
     {% block content %}
 
-    <h1>Movie, book, Whatever</h1>
-   
+    <h1>Movies</h1>
+    <ul>
+        {% for movie in movies.object_list %}
+    <li>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</li>
+        {% endfor %}
 
+    </ul>
+
+    <div> 
+        {% if movies.has_previous %}
+            <a href="?page1={{movies.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{movies.number}} / {{movies.paginator.num_pages}} 
+        {% if movies.has_next %}
+            <a href="?page1={{movies.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+    <hr />
+
+    <h1>Books</h1>
+    <ul>
+        {% for book in books.object_list %}
+    <li>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</li>
+        {% endfor %}
+    </ul>
+    <div> 
+        {% if books.has_previous %}
+            <a href="?page2={{books.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{books.number}} / {{books.paginator.num_pages}} 
+        {% if books.has_next %}
+            <a href="?page2={{books.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+    <hr />
+
+       <h1>People</h1>
+    <ul>
+        {% for people in people.object_list %}
+    <li>{{people|capfirst}} : {{people.kind |capfirst}} </li>
+        {% endfor %}
+    </ul>
+    <div> 
+        {% if people.has_previous %}
+            <a href="?page3={{people.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{people.number}} / {{people.paginator.num_pages}} 
+        {% if people.has_next %}
+            <a href="?page3={{people.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+   
+        
     {% endblock content %}
     

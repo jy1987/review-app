@@ -11,13 +11,26 @@
 
     <h1>Books</h1>
     <ul>
-        {% for book in books %}
-    <li>{{book}} : {{book.rating}} by {{book.writer}}</li>
+        {% for book in books.object_list %}
+    <li>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</li>
         {% endfor %}
 
     
     </ul>
+
+    <div> 
+        {% if books.has_previous %}
+            <a href="?page={{books.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{books.number}} / {{books.paginator.num_pages}} 
+        {% if books.has_next %}
+            <a href="?page={{books.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+        
     {% endblock content %}
     
+        
+   
         
    

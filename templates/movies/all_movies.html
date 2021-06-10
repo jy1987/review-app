@@ -11,12 +11,23 @@
 
     <h1>Movies</h1>
     <ul>
-        {% for movie in movies %}
-    <li>{{movie}} : {{movie.rating}} by {{movie.director}}</li>
+        {% for movie in movies.object_list %}
+    <li>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</li>
         {% endfor %}
 
     
     </ul>
+
+    <div> 
+        {% if movies.has_previous %}
+            <a href="?page={{movies.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{movies.number}} / {{movies.paginator.num_pages}} 
+        {% if movies.has_next %}
+            <a href="?page={{movies.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+        
     {% endblock content %}
     
         
