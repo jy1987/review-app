@@ -1,0 +1,36 @@
+
+    {% extends "base.html" %}
+    
+    
+    {% block page_title %}
+        {{page_title}}
+    {% endblock page_title %}
+        
+    
+    {% block content %}
+
+    <h1>Books</h1>
+    <ul>
+        {% for book in books %}
+    <li>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</li>
+        {% endfor %}
+
+    
+    </ul>
+
+    <div> 
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{page_obj.number}} / {{page_obj.paginator.num_pages}} 
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+        
+    {% endblock content %}
+    
+        
+   
+        
+   

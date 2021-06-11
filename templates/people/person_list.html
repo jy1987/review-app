@@ -1,0 +1,33 @@
+
+    {% extends "base.html" %}
+    
+    
+    {% block page_title %}
+    {{page_title}}
+    {% endblock page_title %}
+        
+    
+    {% block content %}
+
+    <h1>Person</h1>
+    <ul>
+        {% for one in people %}
+    <li>{{one}} : {{one.kind}} </li>
+        {% endfor %}
+
+    
+    </ul>
+
+    <div> 
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.number|add:-1}}">Previous</a>
+        {% endif %}
+        page: {{page_obj.number}} / {{page_obj.paginator.num_pages}} 
+        {% if page_obj.has_next %}
+            <a href="?page={{page_obj.number|add:1}}">Next</a>
+        {% endif %}
+    </div>
+    {% endblock content %}
+    
+        
+   

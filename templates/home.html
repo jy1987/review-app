@@ -2,20 +2,21 @@
     {% extends "base.html" %}
     
     
-    {% block title %}
-        Movies
-    {% endblock title %}
+    {% block page_title %}
+        {{page_title}}
+    {% endblock page_title %}
         
     
     {% block content %}
 
     <h1>Movies</h1>
-    <ul>
+    <h4><a href="{% url "movies:movies" %}">More Movies</a><h4>
+    <div>
         {% for movie in movies.object_list %}
-    <li>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</li>
+    <h3>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</h3>
         {% endfor %}
 
-    </ul>
+    </div>
 
     <div> 
         {% if movies.has_previous %}
@@ -29,11 +30,12 @@
     <hr />
 
     <h1>Books</h1>
-    <ul>
+    <h4><a href="{% url "books:books" %}">More Books</a><h4>
+    <div>
         {% for book in books.object_list %}
-    <li>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</li>
+    <h3>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</h3>
         {% endfor %}
-    </ul>
+    </div>
     <div> 
         {% if books.has_previous %}
             <a href="?page2={{books.number|add:-1}}">Previous</a>
@@ -46,11 +48,12 @@
     <hr />
 
        <h1>People</h1>
-    <ul>
+       <h4><a href="{% url "people:people" %}">More People</a><h4>
+    <div>
         {% for people in people.object_list %}
-    <li>{{people|capfirst}} : {{people.kind |capfirst}} </li>
+    <h3>{{people|capfirst}} : {{people.kind |capfirst}} </h3>
         {% endfor %}
-    </ul>
+    </div>
     <div> 
         {% if people.has_previous %}
             <a href="?page3={{people.number|add:-1}}">Previous</a>
