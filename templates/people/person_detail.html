@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+    {{person}}
+{% endblock page_title %}
+    
+{% block content %}
+<div>  
+    <h2>Name: {{person.name}}</h2>
+    <h4>{{person.kind}}</h4>
+
+</div>
+
+{% endblock content %}

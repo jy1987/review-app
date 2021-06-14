@@ -12,7 +12,11 @@
     <h1>Books</h1>
     <ul>
         {% for book in books %}
-    <li>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</li>
+    <li>
+        <a href="{% url "books:detail" book.pk%}">
+        {{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}
+        </a>
+    </li>
         {% endfor %}
 
     

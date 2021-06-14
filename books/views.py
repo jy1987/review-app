@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from math import ceil
@@ -21,3 +21,8 @@ class BookView(ListView):
         context = super().get_context_data(**kwargs)
         context["page_title"] = "More Books"
         return context
+
+
+class BookDetail(DetailView):
+
+    model = models.Book

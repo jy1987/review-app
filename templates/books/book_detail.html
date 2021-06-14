@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+    {{book}}
+{% endblock page_title %}
+    
+{% block content %}
+<div>  
+    <h2>Title: {{book.title}}</h2>
+    <h4>{{book.year}}</h4>
+     <h4>Avg rate: {{book.total_rating}}</h4>
+</div>
+<div>
+    <h5>by {{book.writer}}</h5>
+         
+    <h5>  Genre : {{book.genre}}</h5>
+          
+
+</div>
+{% endblock content %}

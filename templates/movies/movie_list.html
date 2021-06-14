@@ -12,7 +12,11 @@
     <h1>Movies</h1>
     <ul>
         {% for movie in movies %}
-    <li>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</li>
+    <li>
+        <a href="{% url "movies:detail" movie.pk%}">
+        {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
+        </a>
+    </li>
         {% endfor %}
 
     

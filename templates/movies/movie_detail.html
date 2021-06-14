@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+    {{movie}}
+{% endblock page_title %}
+    
+{% block content %}
+<div>  
+    <h2>Title: {{movie.title}}</h2>
+    <h4>{{movie.year}}</h4>
+     <h4>Avg rate: {{movie.total_rating}}</h4>
+</div>
+<div>
+    <h5>by {{movie.director}}</h5>
+    with 
+        {% for cast in movie.cast.all %}
+          
+    <h5>  {{cast}}</h5>
+          
+        {% endfor %}
+
+
+</div>
+{% endblock content %}
