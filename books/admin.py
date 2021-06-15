@@ -11,7 +11,6 @@ class BookAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "year",
-        "get_cover",
         "genre",
         "rating",
         "writer",

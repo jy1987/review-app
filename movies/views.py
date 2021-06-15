@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from math import ceil
@@ -26,3 +26,29 @@ class MovieView(ListView):
 class MovieDetail(DetailView):
 
     model = models.Movie
+
+
+class UpdateMovieView(UpdateView):
+
+    model = models.Movie
+    fields = (
+        "title",
+        "year",
+        "rating",
+        "genre",
+        "director",
+        "cast",
+    )
+
+
+class CreateMovieView(CreateView):
+
+    model = models.Movie
+    fields = (
+        "title",
+        "year",
+        "rating",
+        "genre",
+        "director",
+        "cast",
+    )

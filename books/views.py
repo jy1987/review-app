@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from math import ceil
@@ -26,3 +26,27 @@ class BookView(ListView):
 class BookDetail(DetailView):
 
     model = models.Book
+
+class UpdateBookView(UpdateView):
+
+    model = models.Book
+    fields = (
+        "title",
+        "year",
+        "rating",
+        "genre",
+        "writer",
+    )
+
+
+class CreateBookView(CreateView):
+
+    model = models.Book
+    fields = (
+        "title",
+        "year",
+        "rating",
+        "genre",
+        "writer",
+    )
+

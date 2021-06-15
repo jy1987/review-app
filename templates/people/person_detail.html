@@ -12,5 +12,8 @@
     <h4>{{person.kind}}</h4>
 
 </div>
+<div>
+    <a href="{% url "people:edit" person.pk %}">Edit People</a>
+</div>
 
 {% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+    Movie
+{% endblock page_title %}
+    
+{% block content %}
+
+<form method="post" >
+    {% csrf_token%}
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors%}
+            <span>{{error}}</span>
+        {% endfor %}
+    {% endif %}
+
+    {% for field in form%}
+    <div>{{field.label}}
+       <div>{{field}}</div>
+    </div> 
+    {% endfor %}
+
+    <button>Save</button>
+</form>
+
+{% endblock content %}

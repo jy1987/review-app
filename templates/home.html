@@ -9,11 +9,16 @@
     
     {% block content %}
 
-    <h1>Movies</h1>
-    <h4><a href="{% url "movies:movies" %}">More Movies</a><h4>
+    <h1>Movies
+        <a href="{% url "movies:create" %}">-Create-</a>
+    </h1>
+    <a href="{% url "movies:movies" %}">More Movies</a>
     <div>
         {% for movie in movies.object_list %}
-    <h3>{{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}</h3>
+   
+    <div style="background-image: url({{movie.cover_image.url}});"></div>  
+        {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
+    
         {% endfor %}
 
     </div>
@@ -29,11 +34,15 @@
     </div>
     <hr />
 
-    <h1>Books</h1>
+    <h1>Books
+        <a href="{% url "books:create" %}">-Create-</a>
+    </h1>
     <h4><a href="{% url "books:books" %}">More Books</a><h4>
     <div>
         {% for book in books.object_list %}
-    <h3>{{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</h3>
+    <h3>
+        <div style="background-image: url({{book.cover_image.url}});"></div>
+        {{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</h3>
         {% endfor %}
     </div>
     <div> 
@@ -47,7 +56,9 @@
     </div>
     <hr />
 
-       <h1>People</h1>
+       <h1>People
+        <a href="{% url "people:create" %}">-Create-</a>
+       </h1>
        <h4><a href="{% url "people:people" %}">More People</a><h4>
     <div>
         {% for people in people.object_list %}

@@ -11,7 +11,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "year",
-        "get_cover",
+     
         "movie_genre",
         "rating",
         "director",

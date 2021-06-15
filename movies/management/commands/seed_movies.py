@@ -33,6 +33,7 @@ class Command(BaseCommand):
             {
                 "title": lambda x: seeder.faker.word(),
                 "rating": lambda x: random.randint(1, 5),
+                "cover_image": lambda x: f"movie/{random.randint(1,8)}.jpeg",
                 "director": lambda x: random.choice(director),
             },
         )

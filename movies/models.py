@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.db.models.deletion import CASCADE
 from django.db.models.fields import related
 from core import models as core_models
@@ -10,7 +11,7 @@ class Movie(core_models.TimeStampedModel):
 
     title = models.CharField(max_length=60)
     year = models.DateField()
-    cover_image = models.ImageField(upload_to="movie_photos", blank=True)
+    cover_image = models.ImageField(upload_to="movie_photos", blank=True, null=True)
     rating = models.IntegerField()
     genre = models.ManyToManyField("categories.Genre", related_name="movie")
     director = models.ForeignKey(
@@ -30,3 +31,6 @@ class Movie(core_models.TimeStampedModel):
             return all_rating / len(all_reviews)
         except ZeroDivisionError:
             return 0
+
+    def get_absolute_url(self):
+        return reverse("movies:detail", kwargs={"pk": self.pk})

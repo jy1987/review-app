@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from math import ceil
@@ -25,3 +25,21 @@ class PeopleView(ListView):
 
 class PeopleDetail(DetailView):
     model = models.Person
+
+
+class UpdatePeopleView(UpdateView):
+
+    model = models.Person
+    fields = (
+        "name",
+        "kind",
+    )
+
+
+class CreatePeopleView(CreateView):
+
+    model = models.Person
+    fields = (
+        "name",
+        "kind",
+    )

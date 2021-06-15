@@ -32,6 +32,7 @@ class Command(BaseCommand):
                 "rating": lambda x: random.randint(1, 5),
                 "genre": lambda x: random.choice(genre),
                 "writer": lambda x: random.choice(writer),
+                "cover_image": lambda x: f"book/{random.randint(1,5)}.jpeg",
             },
         )
 
