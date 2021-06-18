@@ -1,9 +1,12 @@
+from django.db import models
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.contrib.auth import authenticate, login, logout
-from . import forms
+from django.contrib.auth.views import PasswordChangeView
+from django.views.generic.edit import UpdateView
+from . import forms, models
 
 # Create your views here.
 
@@ -46,3 +49,29 @@ class SignUpView(FormView):
             login(self.request, user)
             return redirect(reverse("core:home"))
         return super().form_valid(form)
+
+
+class UserProfileView(DetailView):
+    model = models.User
+    context_object_name = "user_obj"
+
+
+class UpdateProfileView(UpdateView):
+    model = models.User
+    template_name = "users/update-profile.html"
+    fields = (
+        "first_name",
+        "last_name",
+        "bio",
+        "preference",
+        "language",
+        "favorite_book_genre",
+        "favorite_movie_genre",
+    )
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UpdatePasswordView(PasswordChangeView):
+    template_name = "users/update-password.html"

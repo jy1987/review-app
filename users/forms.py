@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import fields
 from . import models
 
 
@@ -20,10 +21,11 @@ class LoginForm(forms.Form):
             self.add_error("email", forms.ValidationError("User not exist"))
 
 
-class SignUpForm(forms.Form):
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=50)
-    email = forms.EmailField()
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = ("first_name", "last_name", "email")
+
     password = forms.CharField(widget=forms.PasswordInput)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Confirm PW")
 
@@ -31,7 +33,7 @@ class SignUpForm(forms.Form):
         email = self.cleaned_data.get("email")
         try:
             models.User.objects.get(email=email)
-            raise forms.ValidationError("User already exists")
+            raise forms.ValidationError("user already exist")
         except models.User.DoesNotExist:
             return email
 
@@ -49,6 +51,6 @@ class SignUpForm(forms.Form):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
         user = models.User.objects.create_user(email, email, password)
-        user.first_name=first_name
-        user.last_name=last_name
+        user.first_name = first_name
+        user.last_name = last_name
         user.save()

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+    
+    
+{% block page_title %}
+    {{user}}'s update profile
+{% endblock page_title %}
+    
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" action="{% url "users:update-profile" %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Update Profile</button>
+</form>
+<div>
+    <a href="{% url "users:password" %}">Change Password</a>
+</div>
+
+
+
+{% endblock content %}

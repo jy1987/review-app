@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.db.models.deletion import CASCADE
 
@@ -29,3 +30,7 @@ class User(AbstractUser):
         "categories.Genre", related_name="users_movie"
     )
     superhost = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+
+        return reverse("users:profile", kwargs={"pk": self.pk})
