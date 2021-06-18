@@ -75,3 +75,4 @@ class UpdateProfileView(UpdateView):
 
 class UpdatePasswordView(PasswordChangeView):
     template_name = "users/update-password.html"
+    success_url = reverse_lazy("users:update-profile")
