@@ -8,22 +8,6 @@
     
 {% block content %}
 
-<form method="post" >
-    {% csrf_token%}
-
-    {% if form.non_field_errors %}
-        {% for error in form.non_field_errors%}
-            <span>{{error}}</span>
-        {% endfor %}
-    {% endif %}
-
-    {% for field in form%}
-    <div>{{field.label}}
-       <div>{{field}}</div>
-    </div> 
-    {% endfor %}
-
-    <button>Save</button>
-</form>
+{% include 'mixins/form.html' with form=form cta="save" %}
 
 {% endblock content %}

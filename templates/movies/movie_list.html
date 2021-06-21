@@ -9,18 +9,14 @@
     
     {% block content %}
 
-    <h1>Movies</h1>
-    <ul>
+    <div>Movies</div>
+    <div class="flex flex-wrap">
         {% for movie in movies %}
-    <li>
-        <a href="{% url "movies:detail" movie.pk%}">
-        {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
-        </a>
-    </li>
+        {% include 'mixins/movie.html' with movie=movie %}
         {% endfor %}
 
     
-    </ul>
+    </div>
 
     <div> 
         {% if page_obj.has_previous %}

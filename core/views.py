@@ -1,9 +1,11 @@
-from django.views.generic import ListView
+import categories
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django.core.paginator import EmptyPage, Paginator
 from movies import models as movie_models
 from books import models as book_models
 from people import models as people_models
+from categories.models import Category, Genre
 
 # Create your views here.
 
@@ -44,8 +46,25 @@ def home(request):
 
 
 def search(request):
-
+    name = request.GET.get("name", "anything")
+    name = str.capitalize(name)
+    people = people_models.Person.objects.filter(name__contains=name)
+    movies = movie_models.Movie.objects.filter(title__contains=name)
+    books = book_models.Book.objects.filter(title__contains=name)
     return render(
         request,
         "search.html",
+        {
+            "categories": Genre.objects.all(),
+            "name": name,
+            "people": people,
+            "movie": movies,
+            "book": books,
+        },
     )
+
+
+class CategorySearch(DetailView):
+    model = Category
+    context_object_name = "category"
+    template_name = "categories/category_search.html"

@@ -9,18 +9,14 @@
     
     {% block content %}
 
-    <h1>Books</h1>
-    <ul>
+    <div>Books</div>
+    <div class="flex flex-wrap">
         {% for book in books %}
-    <li>
-        <a href="{% url "books:detail" book.pk%}">
-        {{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}
-        </a>
-    </li>
+        {% include 'mixins/book.html' with book=book %}
         {% endfor %}
 
     
-    </ul>
+    </div>
 
     <div> 
         {% if page_obj.has_previous %}

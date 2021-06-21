@@ -1,0 +1,6 @@
+<div>
+    <a href="{% url "movies:detail" movie.pk%}">
+        <div class="w-64 h-64 bg-cover bg-center" style="background-image: url({{movie.cover_image.url}});"></div>
+    {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
+    </a>
+</div>

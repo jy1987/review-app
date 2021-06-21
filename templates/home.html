@@ -10,17 +10,15 @@
     {% block content %}
 
   
-    
-    <h1>Movies
+   <div class="container mx-auto mt-20">
+       <div class="h-75vh w-full bg-cover bg-top" style="background-image:url(https://www.vintagemovieposters.co.uk/wp-content/uploads/2015/12/IMG_0913.jpg)"></div>
+    <div>Movies
         <a href="{% url "movies:create" %}">-Create-</a>
-    </h1>
+    </div>
     <a href="{% url "movies:movies" %}">More Movies</a>
-    <div>
+    <div class="flex flex-wrap ">
         {% for movie in movies.object_list %}
-   
-    <div style="background-image: url({{movie.cover_image.url}});"></div>  
-        {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
-    
+        {% include 'mixins/movie.html' with movie=movie %}
         {% endfor %}
 
     </div>
@@ -40,11 +38,9 @@
         <a href="{% url "books:create" %}">-Create-</a>
     </h1>
     <h4><a href="{% url "books:books" %}">More Books</a><h4>
-    <div>
+    <div class="flex flex-wrap">
         {% for book in books.object_list %}
-    <h3>
-        <div style="background-image: url({{book.cover_image.url}});"></div>
-        {{book|capfirst}} : {{book.rating}} by {{book.writer|capfirst}}</h3>
+        {% include 'mixins/book.html' with book=book %}
         {% endfor %}
     </div>
     <div> 
@@ -63,8 +59,9 @@
        </h1>
        <h4><a href="{% url "people:people" %}">More People</a><h4>
     <div>
-        {% for people in people.object_list %}
-    <h3>{{people|capfirst}} : {{people.kind |capfirst}} </h3>
+        {% for one in people.object_list %}
+           {% include 'mixins/people.html' with one=one %}
+        
         {% endfor %}
     </div>
     <div> 
@@ -76,6 +73,7 @@
             <a href="?page3={{people.number|add:1}}">Next</a>
         {% endif %}
     </div>
+    </div> 
    
         
     {% endblock content %}

@@ -1,0 +1,25 @@
+{
+  "name": "review-app",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jy1987/review-app.git"
+  },
+  "scripts": {
+    "css": "gulp"
+  },
+  "homepage": "https://github.com/jy1987/review-app#readme",
+  "dependencies": {
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.6",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^6.0.0"
+  }
+}

@@ -9,16 +9,14 @@
     
     {% block content %}
 
-    <h1>Person</h1>
-    <ul>
+    <div>Person</div>
+    <div>
         {% for one in people %}
-    <li>
-        <a href="{% url "people:detail" one.pk%}">{{one}} : {{one.kind}}</a> 
-    </li>
+            {% include 'mixins/people.html' with one=one %}
         {% endfor %}
 
     
-    </ul>
+    </div>
 
     <div> 
         {% if page_obj.has_previous %}
