@@ -8,15 +8,17 @@
         
     
     {% block content %}
+<div class="inset-0 mt-20 flex flex-col items-center justify-center"> 
+    <div class="mt-10 text-xl font-bold">Genres</div>
+<div class="mt-10 text-center">
+    {% for genre in genres %}
+<div><a href="{%url "genre:detail" genre.pk %}">{{genre}}</a> </div>
+    {% endfor %}
 
-    <h1>Genres</h1>
-    <ul>
-        {% for genre in genres %}
-    <li>{{genre}} </li>
-        {% endfor %}
 
-    
-    </ul>
+</div>
+</div>
+   
     {% endblock content %}
     
         

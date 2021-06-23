@@ -8,15 +8,17 @@
         
     
     {% block content %}
-
+<div class="mt-20"> 
     <div>Movies</div>
-    <div class="flex flex-wrap">
-        {% for movie in movies %}
-        {% include 'mixins/movie.html' with movie=movie %}
-        {% endfor %}
+        <div class="flex flex-wrap">
+            {% for movie in movies %}
+             {% include 'mixins/movie.html' with movie=movie %}
+             {% endfor %}
 
-    
-    </div>
+
+        </div>
+</div>
+   
 
     <div> 
         {% if page_obj.has_previous %}

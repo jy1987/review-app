@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block page_title %}
+
+    {{movie}}
+{% endblock page_title %}
+    
+{% block content %}
+
+<div class="inset-0 mt-20 border-b-2 border-gray-700 ">  
+    <div class="mt-10 flex justify-center">
+        <span>Results</span>
+    </div>
+    <div class="container mx-auto flex justify-center">
+        <div class="w-full flex flex-col items-center">   
+            <div class="mt-20 text-xl font-bold">Movie</div>
+                {%if genre.movie.all.count > 0 %}
+                    {% for movie in genre.movie.all %} 
+        
+                     {% include 'mixins/movie.html' with movie=movie %}
+
+                    {% endfor %}
+                {% else %}
+                    <span>No results</span>
+                {%endif%}
+    
+        </div>
+
+        <div class="w-full flex flex-col items-center">  
+            <div class="mt-20 text-xl font-bold">Book</div>
+                {%if genre.books.all.count > 0 %}
+                    {% for book in genre.books.all %} 
+
+                    {% include 'mixins/book.html' with book=book %}
+
+                    {% endfor %}
+                {% else %}
+                    <span>No results</span>
+                {%endif%}
+        </div>
+    </div>
+</div>
+    
+
+{% endblock content %}

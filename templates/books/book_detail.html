@@ -7,19 +7,25 @@
 {% endblock page_title %}
     
 {% block content %}
-<div>  
-    <h2>Title: {{book.title}}</h2>
-    <h4>{{book.year}}</h4>
-     <h4>Avg rate: {{book.total_rating}}</h4>
-</div>
-<div>
-    <h5>by {{book.writer}}</h5>
-         
-    <h5>  Genre : {{book.genre}}</h5>
-          
+<div class="mt-20 flex flex-col items-center mb-10">  
+    <div class="container mx-auto flex flex-col items-center ">
+       
+            <img src="{{book.cover_image.url}}" class="w-1/3 rounded-xl border-yellow-700 border mt-10">
+            <div class="mt-10 text-xl">Title: {{book.title}}</div>
+            <div class="mt-5">{{book.year}}</div>
+            <div class="mt-5">Avg rate: {{book.total_rating}}</div>
+    
+    
+            <div class="mt-5">by {{book.writer}}</div>
+             
+            <div class="mt-5">  Genre : {{book.genre}}</div>
+      
+   
+    </div>
+        
 
-</div>
-<div>
+<div class="mt-5 bg-yellow-300 py-4 px-8 rounded-md">
     <a href="{% url "books:edit" book.pk %}">Edit Book</a>
+</div>
 </div>
 {% endblock content %}

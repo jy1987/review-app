@@ -7,17 +7,21 @@
     
 
 {% block content %}
+<div class="mt-20 flex justify-center">
+    <div>
+    <div class="border-yellow-300 border mt-20 w-full py-10 px-5 rounded-md">
+        <div>Name: {{user_obj.first_name}}</div>
+        <div>Email: {{user_obj.email}}</div>
+        <div>Bio: {{user_obj.bio}}</div>
+        <div>Preference: {{user_obj.preference}}</div>
+        <div>Language: {{user_obj.language}}</div>
+    </div>
 
-<form method="post" action="{% url "users:profile" user.pk%}">
-    {% csrf_token %}
-    <div>Name: {{user_obj.first_name}}</div>
-    <div>Email: {{user_obj.email}}</div>
-    <div>Bio: {{user_obj.bio}}</div>
-    <div>Preference: {{user_obj.preference}}</div>
-    <div>Language: {{user_obj.language}}</div>
+    <div class="flex justify-center mt-5 bg-yellow-300 py-2 rounded-md"><a class="text-center" href="{% url "users:update-profile"%}">Update Profile</a></div>
     
-    <a href="{% url "users:update-profile"%}">Update Profile</a>
-    </form>
+    </div>
+</div>
+
 
 
 

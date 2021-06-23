@@ -16,7 +16,7 @@
         <a href="{% url "movies:create" %}">-Create-</a>
     </div>
     <a href="{% url "movies:movies" %}">More Movies</a>
-    <div class="flex flex-wrap ">
+    <div class="w-4/5 flex flex-wrap overflow-hidden">
         {% for movie in movies.object_list %}
         {% include 'mixins/movie.html' with movie=movie %}
         {% endfor %}
@@ -34,11 +34,11 @@
     </div>
     <hr />
 
-    <h1>Books
+    <div>Books
         <a href="{% url "books:create" %}">-Create-</a>
-    </h1>
-    <h4><a href="{% url "books:books" %}">More Books</a><h4>
-    <div class="flex flex-wrap">
+    </div>
+    <a href="{% url "books:books" %}">More Books</a>
+    <div class="w-4/5 flex flex-wrap overflow-hidden">
         {% for book in books.object_list %}
         {% include 'mixins/book.html' with book=book %}
         {% endfor %}
