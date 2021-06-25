@@ -29,6 +29,9 @@ class Review(core_models.TimeStampedModel):
     def ratings(self):
         return int(self.rating)
 
+    class Meta:
+        ordering = ("-created",)
+
     """def movie_rating(self):
         if self.book == "":
             return int(self.rating)

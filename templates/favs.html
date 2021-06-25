@@ -8,18 +8,18 @@
     
 {% block content %}
 <div class="mt-20 flex flex-col items-center mb-10">
-    <div class="container mx-auto flex flex-col items-center mb-10">  
+    <div class="container mx-auto flex flex-col items-center mb-10 border-b border-gray-400 pb-10">  
        
         <div class="mt-10 text-xl">{{writer}}</div>
         <div class="mt-10 w-1/2 flex justify-between">
-            <div class="mt-10"><span class=" text-xl font-bold text-gray-600">Movie</span>
+            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-gray-600">Movie</span>
             {% for movie in movies %}
-                <div class="mt-5">{{movie}}</div> 
+                {% include 'mixins/movie.html' with movie=movie w_and_h='w-32 h-32' %}
             {% endfor %}
             </div>
-            <div class="mt-10"><span class=" text-xl font-bold text-gray-600">Book</span>
+            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-gray-600">Book</span>
             {% for book in books %}
-                <div class="mt-5">{{book}}</div> 
+            {% include 'mixins/book.html' with book=book  w_and_h='w-32 h-32' %}
             {% endfor %}
             </div>
         </div>

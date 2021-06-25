@@ -39,7 +39,24 @@
 {% if user.is_authenticated %}
     {% include 'mixins/favs_button.html' with obj=movie kind='movie' %}
 {% endif %}
-    
+
+
+{% if reviews %}
+        {% for review in reviews %}
+          <div>
+            <span class="text-xl font-bold my-2">{{review.created_by}}</span>
+            <span class="text-xs mr-1"> 평점 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{review.rating}}</span>
+            <div class="text-sm mr-1" >{{review.text}}</div>
+          </div>
+        {% endfor %}
+{% endif %}
+
+<form method="POST" action="{%url "reviews:create" movie.pk%}">
+    {% csrf_token %}
+    {{form}}
+    <button>Submit Review</button>
+
+</form>
 
 </div>
 {% endblock content %}
