@@ -10,13 +10,13 @@
     {% block content %}
 
   
-   <div class="container mx-auto mt-20">
+   <div class="container mx-auto mt-20 ">
        <div class="h-75vh w-full bg-cover bg-top" style="background-image:url(https://www.vintagemovieposters.co.uk/wp-content/uploads/2015/12/IMG_0913.jpg)"></div>
     <div>Movies
         <a href="{% url "movies:create" %}">-Create-</a>
     </div>
     <a href="{% url "movies:movies" %}">More Movies</a>
-    <div class="w-4/5 flex flex-wrap overflow-hidden">
+    <div class="w-full flex flex-wrap overflow-hidden">
         {% for movie in movies.object_list %}
         {% include 'mixins/movie.html' with movie=movie %}
         {% endfor %}
@@ -38,7 +38,7 @@
         <a href="{% url "books:create" %}">-Create-</a>
     </div>
     <a href="{% url "books:books" %}">More Books</a>
-    <div class="w-4/5 flex flex-wrap overflow-hidden">
+    <div class="w-full flex flex-wrap overflow-hidden">
         {% for book in books.object_list %}
         {% include 'mixins/book.html' with book=book %}
         {% endfor %}
@@ -58,7 +58,7 @@
         <a href="{% url "people:create" %}">-Create-</a>
        </h1>
        <h4><a href="{% url "people:people" %}">More People</a><h4>
-    <div>
+    <div class="w-full flex flex-wrap overflow-hidden">
         {% for one in people.object_list %}
            {% include 'mixins/people.html' with one=one %}
         

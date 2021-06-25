@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from django_seed import Seed
 from people.models import Person
+import random
 
 
 class Command(BaseCommand):
@@ -20,7 +21,10 @@ class Command(BaseCommand):
         seeder.add_entity(
             Person,
             int(total),
-            {"name": lambda x: seeder.faker.name()},
+            {
+                "name": lambda x: seeder.faker.name(),
+                "photo": lambda x: f"people/{random.randint(1,6)}.jpeg",
+            },
         )
         seeder.execute()
         self.stdout.write(self.style.SUCCESS(f"{total} people created!"))

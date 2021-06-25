@@ -47,7 +47,7 @@ def home(request):
 
 def search(request):
     name = request.GET.get("name", "anything")
-    name = str.capitalize(name)
+    name = str(name)
     people = people_models.Person.objects.filter(name__contains=name)
     movies = movie_models.Movie.objects.filter(title__contains=name)
     books = book_models.Book.objects.filter(title__contains=name)
@@ -55,16 +55,10 @@ def search(request):
         request,
         "search.html",
         {
-            "categories": Genre.objects.all(),
+            "genres": Genre.objects.all(),
             "name": name,
             "people": people,
-            "movie": movies,
-            "book": books,
+            "movies": movies,
+            "books": books,
         },
     )
-
-
-class CategorySearch(DetailView):
-    model = Category
-    context_object_name = "category"
-    template_name = "categories/category_search.html"

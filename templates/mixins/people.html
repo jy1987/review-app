@@ -1,3 +1,6 @@
-<div>
-    <a href="{% url "people:detail" one.pk%}">{{one}} : {{one.kind}}</a> 
+<div class="w-1/4 flex justify-center">
+    <a href="{% url "people:detail" one.pk%}">
+        <div class="w-64 h-64 bg-cover bg-center rounded-lg" style="background-image: url({{one.photo.url}});"></div>
+    {{one|capfirst}} : {{one.kind}} 
+    </a>
 </div>

@@ -27,5 +27,9 @@
 <div class="mt-5 bg-yellow-300 py-4 px-8 rounded-md">
     <a href="{% url "books:edit" book.pk %}">Edit Book</a>
 </div>
+
+{% if user.is_authenticated %}
+    {% include 'mixins/favs_button.html' with obj=book kind='book' %}
+{% endif %}
 </div>
 {% endblock content %}

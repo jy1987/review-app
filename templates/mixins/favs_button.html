@@ -1,0 +1,17 @@
+{% load i18n on_favs %}
+{% on_favs obj as on_favs_boolean %}
+
+<div class="mt-5 bg-red-400 py-4 px-8 rounded-md">
+    <a href="{% url "favs:save" obj.pk %}?kind={{kind}}">
+        {% if on_favs_boolean %}
+  
+        Remove from favs!
+  
+{% else %}
+  
+      Add to favs!
+  
+{% endif %}
+  </a>
+    </a>
+</div > 

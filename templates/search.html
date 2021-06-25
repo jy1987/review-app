@@ -1,25 +1,58 @@
+{% extends "base.html" %}
 
-    {% extends "base.html" %}
-    
-    
-    {% block title %}
-        Search
-    {% endblock title %}
-        
-    
-    {% block content %}
-
-    <div class="mt-20">What are u looking for?</div>
-    <form class="search" method="get" action="{% url "core:search" %}">
-        <select name="name" value={{category.name}}>   {% for category in categories %}
-            <option value="{{category.name}}" {%if category.name == name%} selected {% endif %}>{{category.name}}</option>
-            {% endfor %}</select>
-        <button>Search</button>
-    </form>
-
-    
- 
+{% block page_title %}
+  Search
+{% endblock page_title %}
 
 
-    {% endblock content %}
-   
+{% block content %}
+<div class="container mx-auto mt-20">
+
+  <form class="flex justify-center" method="GET" action="{% url "core:search" %}"> 
+    <input class="border rounede w-3/5 mr-4 shadow focus:outline-none " type="text" placeholder="Search Movie, Book or Person" name="name" value="{{name}}"/>
+    <button class="bg-yellow-500 hover:bg-green-600 focus:outline-none text-white font-bold rounded w-36 mt-2 py-2 px-4">Search</button>
+  </form>
+  
+  <div class="mb-20 flex flex-col items-center">
+    <div class="block text-gray-800 font-bold my-4 mt-10">Genres</div>
+    <div class="flex w-3/5 flex-wrap my-4 shadow-xl px-2 py-4 ">
+      {% for genre in genres %}
+      <div class="bg-yellow-300 text-white rounded-xl px-6 py-3 my-1 mx-2 hover:bg-green-500">
+        <a href="{%url "genre:detail" genre.pk %}">{{genre.name}}</a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <div class="flex flex-col w-full items-center">
+    <div class="text-xl font-bold my-8">Results for "{{name}}"</div>
+
+    {% if movies.count > 0 %}
+      <div class="rounded-xl w-full px-4 py-4">
+        <div class="text-lg font-bold mb-8  ">Movies</div>
+        {% for movie in movies %}
+          {% include "mixins/movie.html" with movie=movie %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if books.count > 0 %}
+      <div class="rounded-xl w-full px-4 py-4">
+        <div class="text-lg font-bold mb-8 ">Books</div>
+        {% for book in books %}
+          {% include "mixins/book.html" with book=book %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if people.count > 0 %}
+      <div class="rounded-xl w-full px-4 py-4">
+        <div class="text-lg font-bold mb-8 ">People</div>
+        {% for person in people %}
+          {% include "mixins/person.html" with person=person %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock content %}

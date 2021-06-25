@@ -2,19 +2,22 @@
     <a href="{%url "core:home" %}">Review_Home</a>
     <a href="{% url "core:search" %}">Search</a>
     <a href="{% url "genre:genre" %}">Categoty</a>
-    <ul>
+    <div>
         <div class="flex justify-between">
             
         {% if user.is_authenticated %}
-        <li><a href="{% url "users:logout" %}">Log out</a></li>
-        <li><a href="{% url "users:profile" user.pk %}">Profile</a></li>
+       
+        <div><a class="py-7 border-b-2 border-white hover:border-red-300" href="{% url "users:logout" %}">Log out</a></div>
+        <div><a class="py-7 border-b-2 border-white hover:border-red-300" href="{% url "users:profile" user.pk %}">Profile</a></div>
+        
         {% else %}
-        <li><a href="{% url "users:login" %}">Log in</a></li>
-        <li><a href="{% url "users:signup" %}">Sign up</a></li>
+        
+        <div><a class="py-7 border-b-2 border-white hover:border-red-300" href="{% url "users:login" %}">Log in</a></div>
+        <div><a class="py-7 border-b-2 border-white hover:border-red-300" href="{% url "users:signup" %}">Sign up</a></div>
         {% endif %}
     </div>   
         
-    </ul>
+    </div>
 </header>
    
 
