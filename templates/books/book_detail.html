@@ -31,5 +31,31 @@
 {% if user.is_authenticated %}
     {% include 'mixins/favs_button.html' with obj=book kind='book' %}
 {% endif %}
+
+<div class="mt-10">
+    <div>Review</div>
+{% if reviews %}
+        {% for review in reviews %}
+          <div>
+            <span class="text-xl font-bold my-2">{{review.created_by}}</span>
+            <span class="text-xs mr-1"> 평점 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{review.rating}}</span>
+            <div class="text-sm mr-1" >{{review.text}}</div>
+          </div>
+          <a href="{%url "reviews:delete" review.pk%}">Delete</a>
+        {% endfor %}
+{% endif %}
+</div>
+
+
+<div class="mt-10">
+    <div>Write down your opinion</div>
+    <form method="POST" action="{%url "reviews:create" book.pk%}">
+        {% csrf_token %}
+        {{form}}
+        <button>Submit Review</button>
+
+    </form>
+</div>
+
 </div>
 {% endblock content %}
