@@ -10,16 +10,16 @@
 <div class="mt-20 flex flex-col items-center mb-10">
     <div class="container mx-auto flex flex-col items-center mb-10 border-b border-gray-400 pb-10">  
        
-        <div class="mt-10 text-xl">{{writer}}</div>
+        <div class="mt-10 text-xl">Name : {{writer}}</div>
         <div class="mt-10 w-1/2 flex justify-between">
-            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-gray-600">Movie</span>
+            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-purple-400">Movie</span>
             {% for movie in movies %}
-                {% include 'mixins/movie.html' with movie=movie w_and_h='w-32 h-32' %}
+                {% include 'mixins/movie.html' with movie=movie w_and_h='w-48 h-48' %}
             {% endfor %}
             </div>
-            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-gray-600">Book</span>
+            <div class="mt-10 flex flex-col items-center"><span class=" text-xl font-bold text-purple-400">Book</span>
             {% for book in books %}
-            {% include 'mixins/book.html' with book=book  w_and_h='w-32 h-32' %}
+            {% include 'mixins/book.html' with book=book  w_and_h='w-48 h-48' %}
             {% endfor %}
             </div>
         </div>

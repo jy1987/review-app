@@ -1,0 +1,6 @@
+<form class="w-1/2 text-indigo-500" method="POST" action="{%url "reviews:create" movie.pk%}">
+    {% csrf_token %}
+    {{form}}
+    <div class="flex justify-center mt-5 text-yellow-200"><button class="bg-yellow-400 py-3 px-8 rounded-lg">Submit Review</button>
+    </div>
+</form>

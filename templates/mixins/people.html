@@ -1,6 +1,7 @@
-<div class="w-1/4 flex justify-center">
-    <a href="{% url "people:detail" one.pk%}">
+<div class="w-1/4 flex justify-center mb-4">
+    <a class="flex flex-col items-center" href="{% url "people:detail" one.pk%}">
         <div class="w-64 h-64 bg-cover bg-center rounded-lg" style="background-image: url({{one.photo.url}});"></div>
-    {{one|capfirst}} : {{one.kind}} 
+    <div class="text-xl font-medium">{{one|capfirst}} </div> 
+    <div>{{one.kind}} </div>
     </a>
 </div>

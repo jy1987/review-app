@@ -9,12 +9,12 @@
 {% block content %}
 
 <div class="inset-0 mt-20 border-b-2 border-gray-700 ">  
-    <div class="mt-10 flex justify-center">
-        <span>Results</span>
+    <div class="flex justify-center text-2xl font-bold text-purple-500">
+        <span class="mt-10">Results</span>
     </div>
     <div class="container mx-auto flex justify-center">
         <div class="w-full flex flex-col items-center">   
-            <div class="mt-20 text-xl font-bold">Movie</div>
+            <div class="mt-20 text-xl font-bold mb-5">Movie</div>
                 {%if genre.movie.all.count > 0 %}
                     {% for movie in genre.movie.all %} 
         
@@ -28,7 +28,7 @@
         </div>
 
         <div class="w-full flex flex-col items-center">  
-            <div class="mt-20 text-xl font-bold">Book</div>
+            <div class="mt-20 text-xl font-bold mb-5">Book</div>
                 {%if genre.books.all.count > 0 %}
                     {% for book in genre.books.all %} 
 

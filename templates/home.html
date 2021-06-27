@@ -11,12 +11,12 @@
 
   
    <div class="container mx-auto mt-20 ">
-       <div class="h-75vh w-full bg-cover bg-top" style="background-image:url(https://www.vintagemovieposters.co.uk/wp-content/uploads/2015/12/IMG_0913.jpg)"></div>
-    <div>Movies
-        <a href="{% url "movies:create" %}">-Create-</a>
+       <div class="rounded-lg h-75vh w-full bg-cover bg-center" style="background-image:url(https://p4.wallpaperbetter.com/wallpaper/504/809/128/movie-the-grand-budapest-hotel-hotel-pink-wallpaper-preview.jpg)"></div>
+    <div class="mt-10 text-2xl font-bold mb-5">Movies
+        <a class="ml-10 text-xl" href="{% url "movies:create" %}">-Create Movies-</a>
     </div>
-    <a href="{% url "movies:movies" %}">More Movies</a>
-    <div class="w-full flex flex-wrap overflow-hidden">
+    <a href="{% url "movies:movies" %}">>> More Movies</a>
+    <div class="w-full flex flex-wrap overflow-hidden mt-5">
         {% for movie in movies.object_list %}
         {% include 'mixins/movie.html' with movie=movie %}
         {% endfor %}
@@ -34,11 +34,11 @@
     </div>
     <hr />
 
-    <div>Books
-        <a href="{% url "books:create" %}">-Create-</a>
+    <div class="mt-10 text-2xl font-bold mb-5">Books
+        <a class="ml-10 text-xl" href="{% url "books:create" %}">-Create Books-</a>
     </div>
-    <a href="{% url "books:books" %}">More Books</a>
-    <div class="w-full flex flex-wrap overflow-hidden">
+    <a href="{% url "books:books" %}">>> More Books</a>
+    <div class="w-full flex flex-wrap overflow-hidden mt-5">
         {% for book in books.object_list %}
         {% include 'mixins/book.html' with book=book %}
         {% endfor %}
@@ -54,11 +54,11 @@
     </div>
     <hr />
 
-       <h1>People
-        <a href="{% url "people:create" %}">-Create-</a>
-       </h1>
-       <h4><a href="{% url "people:people" %}">More People</a><h4>
-    <div class="w-full flex flex-wrap overflow-hidden">
+       <div class="mt-10 text-2xl font-bold mb-5">People
+        <a class="ml-10 text-xl" href="{% url "people:create" %}">-Create People-</a>
+       </div>
+       <div><a href="{% url "people:people" %}">>> More People</a><div>
+    <div class="w-full flex flex-wrap overflow-hidden mt-5">
         {% for one in people.object_list %}
            {% include 'mixins/people.html' with one=one %}
         
@@ -73,6 +73,7 @@
             <a href="?page3={{people.number|add:1}}">Next</a>
         {% endif %}
     </div>
+    <hr />
     </div> 
    
         

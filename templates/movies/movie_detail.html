@@ -44,24 +44,25 @@
     <div>Review</div>
 {% if reviews %}
         {% for review in reviews %}
-          <div>
-            <span class="text-xl font-bold my-2">{{review.created_by}}</span>
-            <span class="text-xs mr-1"> 평점 <i class="fas fa-star text-red-500 text-xs mr-1"></i>{{review.rating}}</span>
-            <div class="text-sm mr-1" >{{review.text}}</div>
-          </div>
-          <a href="{%url "reviews:delete" review.pk%}">Delete</a>
+          
+            <div class="border py-4 px-4 border-green-300 rounded-lg">
+                <div class="text-xl font-bold my-2">{{review.created_by}}</div>
+                <div class="text-sm mr-1"> 평점 <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>{{review.rating}}</div>
+                <div class="text-sm mr-1" >한줄평 : {{review.text}}</div>
+              </div>
+              <a class="text-red-400 text-xs mt-2" href="{%url "movies:review-delete" review_pk=review.pk movie_pk=movie.pk%}">[Delete]</a>
         {% endfor %}
 {% endif %}
 </div>
 
 
-<div class="mt-10">
+<div class="mt-10 flex flex-col items-center">
     <div>Write down your opinion</div>
-    <form method="POST" action="{%url "reviews:create" movie.pk%}">
+    <form class="w-1/2 text-indigo-500" method="POST" action="{%url "reviews:create" movie.pk%}">
         {% csrf_token %}
         {{form}}
-        <button>Submit Review</button>
-
+        <div class="flex justify-center mt-5 text-yellow-200"><button class="bg-yellow-400 py-3 px-8 rounded-lg">Submit Review</button>
+        </div>
     </form>
 </div>
 

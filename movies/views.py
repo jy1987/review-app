@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from math import ceil
 from . import models
@@ -11,7 +11,7 @@ class MovieView(ListView):
     """Movie View Definition"""
 
     model = models.Movie
-    paginate_by = 10
+    paginate_by = 12
     paginate_orphans = 5
     ordering = "created"
     context_object_name = "movies"
@@ -42,6 +42,18 @@ class MovieDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context["form"] = CreateReviewForm()
         return context
+
+
+def delete_review(request, review_pk, movie_pk):
+
+    user = request.user
+    review = Review.objects.get(pk=review_pk)
+    review_user = review.created_by
+    if user == review_user:
+        review.delete()
+        return redirect(reverse("movies:detail", kwargs={"pk": movie_pk}))
+    else:
+        return redirect(reverse("movies:detail", kwargs={"pk": movie_pk}))
 
 
 class UpdateMovieView(UpdateView):

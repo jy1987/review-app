@@ -1,6 +1,8 @@
-<div class="w-1/4 flex justify-center">
-    <a href="{% url "movies:detail" movie.pk%}">
+<div class="w-1/4 flex justify-center mb-4">
+    <a class="flex flex-col items-center" href="{% url "movies:detail" movie.pk%}">
         <div class="{{w_and_h|default:'w-64 h-64'}} bg-cover bg-center rounded-lg" style="background-image: url({{movie.cover_image.url}});"></div>
-    {{movie|capfirst}} : {{movie.rating}} by {{movie.director|capfirst}}
+    <div class="text-xl font-medium">{{movie|capfirst}}</div>
+    <div class="text-blue-400"><i class="fas fa-star fa-sm "></i> {{movie.rating}} </div>
+    <div>{{movie.director|capfirst}}</div>
     </a>
 </div>

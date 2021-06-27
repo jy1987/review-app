@@ -1,5 +1,5 @@
 <div class="mt-20">
-    <form method="post" >
+    <form method="post" class="flex flex-col items-center" >
         {% csrf_token%}
 
         {% if form.non_field_errors %}
@@ -9,11 +9,11 @@
         {% endif %}
 
         {% for field in form%}
-        <div>{{field.label}}
-           <div>{{field}}</div>
+        <div class="mt-4">{{field.label}}
+           <div class=" text-indigo-500">{{field}}</div>
         </div> 
         {% endfor %}
 
-        <button>{{cta}}</button>
+        <button class="bg-yellow-400 py-4 px-10 rounded-lg mt-10">{{cta}}</button>
     </form>
 </div>

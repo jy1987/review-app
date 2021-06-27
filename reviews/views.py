@@ -39,13 +39,13 @@ def create_review(request, pk):
             return redirect(reverse("books:detail", kwargs={"pk": pk}))
 
 
-def delete_review(request, pk):
+def delete_review(request, pk, movie_pk):
 
     user = request.user
     review = review_models.Review.objects.get(pk=pk)
     review_user = review.created_by
     if user == review_user:
         review.delete()
-        return redirect(reverse("core:home"))
+        return redirect(reverse("movies:detail", kwargs={"pk": movie_pk}))
     else:
         return redirect(reverse("core:home"))

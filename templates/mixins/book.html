@@ -1,10 +1,11 @@
-<div class="w-1/4 flex justify-center">
-    <a href="{% url "books:detail" book.pk%}">
+<div class="w-1/4 flex justify-center mb-4">
+    <a class="flex flex-col items-center" href="{% url "books:detail" book.pk%}">
         <div class="{{w_and_h |default:'w-64 h-64'}} bg-cover bg-center rounded-lg" style="background-image: url({{book.cover_image.url}});"></div>
     
     <div class=" flex flex-col items-center">
-        <div>{{book|capfirst}}</div>
-        <div> : {{book.rating}} by {{book.writer|capfirst}}</div>
+        <div class="w-2/3 text-xl font-medium">{{book|capfirst}}</div>
+        <div class="text-blue-400"><i class="fas fa-star fa-sm "></i> {{book.rating}}</div>
+        <div>{{book.writer|capfirst}}</div>
     </div>   
 </a>
 </div>
