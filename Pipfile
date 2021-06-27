@@ -12,6 +12,7 @@ faker = "*"
 [dev-packages]
 flake8 = "*"
 black = "*"
+awsebcli = "*"
 
 [requires]
 python_version = "3.9"
